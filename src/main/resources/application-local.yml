@@ -1,0 +1,15 @@
+#eureka server 사용 설정
+eureka:
+  instance:
+    prefer-ip-address: true
+  #    lease-renewal-interval-in-seconds: 10 # 하트비트 간격(기본 30초)
+  #    lease-expiration-duration-in-seconds: 30 # 만료 시간(기본 90초)
+  client:
+    register-with-eureka: true  # eureka에 자신을 등록하겠다
+    fetch-registry: true        # eureka에 등록되어있는 service registry를 가져오겠다 (서비스 정보)
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
