@@ -32,6 +32,7 @@ pipeline {
         ARTIFACTS = "build/libs/**"
         DOCKER_REGISTRY = "leenagyoung"
         DOCKERHUB_CREDENTIAL = "dockerhub-token"
+        DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1386572756358791168/sAQu_esRsWKDccimDKVALESFvyMvRW-KaiLYERTnAYtfwEh24ZCY_aazvIFf14wh81bP" 
     }
 
     options {
@@ -109,6 +110,28 @@ pipeline {
                     sh "docker rmi ${DOCKER_IMAGE_NAME}"    // 푸시 끝나면 로컬에서 이미지 삭제
                 }
             }
+        }
+
+    }
+    post {
+        success {
+            echo '✅ 빌드 성공!'
+            sh """
+                curl -H "Content-Type: application/json" \
+                     -X POST \
+                     -d '{"content": "✅ [빌드 성공]\n- 프로젝트: ${APP_NAME}\n- 태그: ${params.TAG}\n- 이미지: ${DOCKER_IMAGE_NAME}"}' \
+                     $DISCORD_WEBHOOK
+            """
+        }
+
+        failure {
+            echo '❌ 빌드 실패...'
+            sh """
+                curl -H "Content-Type: application/json" \
+                     -X POST \
+                     -d '{"content": "❌ [빌드 실패]\n- 프로젝트: ${APP_NAME}\n- 태그: ${params.TAG}"}' \
+                     $DISCORD_WEBHOOK
+            """
         }
     }
 }
