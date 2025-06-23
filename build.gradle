@@ -4,8 +4,8 @@ plugins {
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+group = 'com.team6'
+version = '0.0.1'
 
 java {
 	toolchain {
@@ -38,4 +38,20 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+jar {
+	enabled = false // plain.jar 생성 완전히 비활성화(작성한 코드만 있는 jar파일)
+}
+
+tasks.register('getAppName') {
+	doLast {
+		println "${rootProject.name}"  // setting.gradle에 있는 name
+	}
+}
+
+tasks.register('getAppVersion') {
+	doLast {
+		println "${project.version}"  // 위에있는 version
+	}
 }
