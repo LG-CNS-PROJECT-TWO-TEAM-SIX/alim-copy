@@ -15,7 +15,7 @@ public class AlimController {
     private final AlimService alimService;
 
     @GetMapping("/message")
-    public SseEmitter messageJWT(@RequestParam String email){
+    public SseEmitter message(@RequestParam String email){
         return alimService.createEmitter(email);
     }
 }

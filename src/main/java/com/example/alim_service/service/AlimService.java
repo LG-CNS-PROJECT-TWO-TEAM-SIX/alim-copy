@@ -15,7 +15,7 @@ public class AlimService {
     private final Map<String, SseEmitter> emitterMap = new ConcurrentHashMap<>();
 
     public SseEmitter createEmitter(String email){
-        SseEmitter emitter = new SseEmitter(60 * 1000L);
+        SseEmitter emitter = new SseEmitter(60 * 1000L * 30);
         emitterMap.put(email, emitter);
 
         try {
