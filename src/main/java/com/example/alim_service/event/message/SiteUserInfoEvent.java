@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 public class SiteUserInfoEvent {
-    public static final String Topic = "userinfo";
+    public static final String Topic = "user";
 
     private String action;
     private String email;
