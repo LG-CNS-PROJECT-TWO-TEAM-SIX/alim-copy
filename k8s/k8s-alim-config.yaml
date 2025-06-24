@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alim-config
+  labels:
+    app: alim-service
+data:
+  SPRING_PROFILES_ACTIVE: default
+  "SPRING_KAFKA_BOOTSTRAP_SERVERS": k8s-external-kafka-service:9092

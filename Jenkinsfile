@@ -32,7 +32,7 @@ pipeline {
         ARTIFACTS = "build/libs/**"
         DOCKER_REGISTRY = "leenagyoung"
         DOCKERHUB_CREDENTIAL = "dockerhub-token"
-        DISCORD_WEBHOOK = credentials('discord-webhook') 
+        DISCORD_WEBHOOK = credentials('discord-webhook')
 
     }
 
