@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: alim-service
-          image: leenagyoung/alim-service:0.0.1
+          image: leenagyoung/alim-service:0.0.2
           ports:
             - containerPort: 8080
           env:
