@@ -19,9 +19,11 @@ public class AlimService {
         emitterMap.put(email, emitter);
 
         try {
+            log.info("create emitter success!!");
             emitter.send(SseEmitter.event().name("INIT").data("SSE 연결됨"));
         }
         catch (IOException e){
+            log.error("emitter send error {}",e);
             emitter.completeWithError(e);
         }
 
@@ -31,12 +33,17 @@ public class AlimService {
     }
 
     public void sendToClient (String email, AlimMessage alim){
+
+        log.info("[sendToClient] email :{} ",email);
+
         SseEmitter emitter = emitterMap.get(email);
         if(emitter != null){
             try {
+                log.info("[sendToClient] action : {} , message : {}, time : {}",alim.getAction(),alim.getMessage(),alim.getTime());
                 emitter.send(SseEmitter.event().data(alim));
             }
             catch(IOException e){
+                log.error("[sendToClient] Error : {}",e);
                 emitter.completeWithError(e);
             }
         }

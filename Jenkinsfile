@@ -27,10 +27,10 @@ pipeline {
     }
 
     environment {
-        GIT_URL = "https://github.com/LG-CNS-PROJECT-TWO-TEAM-SIX/Alim-Service.git"
+        GIT_URL = "https://github.com/LG-CNS-PROJECT-TWO-TEAM-SIX/alim-copy.git"
         GITHUB_CREDENTIAL = "github-token"
         ARTIFACTS = "build/libs/**"
-        DOCKER_REGISTRY = "leenagyoung"
+        DOCKER_REGISTRY = "haribonyam"
         DOCKERHUB_CREDENTIAL = "dockerhub-token"
         DISCORD_WEBHOOK = credentials('discord-webhook')
 
